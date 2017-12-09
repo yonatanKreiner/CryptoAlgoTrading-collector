@@ -1,0 +1,18 @@
+{
+  "sampling_time": 3,
+  "file_update_time": 0.2,
+  "markets": [
+    {
+      "name": "bit2c",
+      "symbol": "BTCNIS",
+      "api": "https://www.bit2c.co.il/Exchanges/BtcNis/Ticker.json",
+      "last_price_key": "ll"
+    },
+    {
+      "name": "Bitfinex",
+      "symbol": "BTCUSD",
+      "api": "https://api.bitfinex.com/v1/pubticker/btcusd",
+      "last_price_key": "last_price"
+    }
+  ]
+}
