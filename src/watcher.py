@@ -20,12 +20,14 @@ def watch_markets():
     counter = 0
 
     while True:
+        request_time = time.time()
+        
         for market in markets:
             try:
                 res = requests.get(market['api']).json()
                 price = res[market['last_price_key']]
                 data = {
-                    'time': time.time(),
+                    'time': request_time,
                     'price': float(price)
                 }
                 markets_prices[market['name']].append(data)
