@@ -1,3 +1,4 @@
+import os
 import json
 import requests
 import time
@@ -14,6 +15,7 @@ def initialize_markets_prices_list():
 
 
 def watch_markets():
+    os.makedirs('output', exist_ok=True)
     initialize_markets_prices_list()
     counter = 0
 
