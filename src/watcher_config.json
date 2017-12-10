@@ -1,6 +1,6 @@
 {
   "sampling_time": 3,
-  "file_update_time": 0.2,
+  "file_update_time": 10,
   "markets": [
     {
       "name": "bit2c",
