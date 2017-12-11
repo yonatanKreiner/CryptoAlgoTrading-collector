@@ -6,7 +6,6 @@ from pymongo import MongoClient
 
 config = json.load(open('src/watcher_config.json'))
 markets = config['markets']
-sampling_time = 0
 client = MongoClient('mongodb://ariel:ariel@ds127536.mlab.com:27536/collector')
 db = client.collector
 
