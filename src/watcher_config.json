@@ -9,7 +9,7 @@
       "last_price_key": "ll"
     },
     {
-      "name": "Bitfinex",
+      "name": "bitfinex",
       "symbol": "BTCUSD",
       "api": "https://api.bitfinex.com/v1/pubticker/btcusd",
       "last_price_key": "last_price"
