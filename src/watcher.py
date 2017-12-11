@@ -16,12 +16,12 @@ def watch_markets():
             try:
                 res = requests.get(market['api']).json()
                 price = res[market['last_price_key']]
-                data = {
+                ticker = {
                     'date': datetime.datetime.utcnow(),
                     'price': float(price)
                 }
 
-                db[market['name']].insert_one(data)
+                db[market['name']].insert_one(ticker)
             except:
                 continue
         time.sleep(config['sampling_time'])
