@@ -187,4 +187,3 @@ pyvenv.cfg
 # End of https://www.gitignore.io/api/venv,python,pycharm
 
 .idea/
-output/

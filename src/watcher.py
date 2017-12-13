@@ -12,12 +12,14 @@ db = client.collector
 
 def watch_markets():
     while True:
+        sample_time = datetime.datetime.utcnow()
+
         for market in markets:
             try:
                 res = requests.get(market['api']).json()
                 price = res[market['last_price_key']]
                 ticker = {
-                    'date': datetime.datetime.utcnow(),
+                    'date': sample_time,
                     'price': float(price)
                 }
 
