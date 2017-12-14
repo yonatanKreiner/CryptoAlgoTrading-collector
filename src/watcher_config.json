@@ -6,13 +6,19 @@
       "name": "bit2c",
       "symbol": "BTCNIS",
       "api": "https://www.bit2c.co.il/Exchanges/BtcNis/Ticker.json",
-      "last_price_key": "ll"
+      "last_price_key": "ll",
+      "24_hours_volume_key": "a",
+      "bid_key": "h",
+      "ask_key": "l"
     },
     {
       "name": "bitfinex",
       "symbol": "BTCUSD",
       "api": "https://api.bitfinex.com/v1/pubticker/btcusd",
-      "last_price_key": "last_price"
+      "last_price_key": "last_price",
+      "24_hours_volume_key": "volume",
+      "bid_key": "bid",
+      "ask_key": "ask"
     }
   ]
 }

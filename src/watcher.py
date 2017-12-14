@@ -18,9 +18,15 @@ def watch_markets():
             try:
                 res = requests.get(market['api']).json()
                 price = res[market['last_price_key']]
+                volume = res[market['24_hours_volume_key']]
+                bid = res[market['bid_key']]
+                ask = res[market['ask_key']]
                 ticker = {
                     'date': sample_time,
-                    'price': float(price)
+                    'price': float(price),
+                    'volume': float(volume),
+                    'bid': float(bid),
+                    'ask': float(ask)
                 }
 
                 db[market['name']].insert_one(ticker)
