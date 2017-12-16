@@ -30,6 +30,8 @@ def watch_markets():
                 }
 
                 db[market['name']].insert_one(ticker)
-            except:
-                continue
+            except Exception as e:
+                error_file = open("error.log", "w")
+                error_file.write("Failed on: {0}\n".format(str(e)))
+                error_file.close()
         time.sleep(config['sampling_time'])
