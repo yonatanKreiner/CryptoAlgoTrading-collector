@@ -15,6 +15,7 @@ db = client.collector
 def watch_markets():
     while True:
         sample_time = datetime.datetime.utcnow()
+        tickers = []
 
         for market in markets:
             try:
@@ -30,9 +31,15 @@ def watch_markets():
                     'bid': float(bid),
                     'ask': float(ask)
                 }
+                tickers[market['name']] = ticker
 
-                db[market['name']].insert_one(ticker)
             except Exception as e:
                 with open('error.log', 'a') as log:
                     log.write(str(e) + '\n' + traceback.format_exc() + '\n')
+
+        if len(tickers) == len(markets):
+            for market in markets:
+                market_name = market['name']
+                db[market_name].insert_one(tickers[market_name])
+
         time.sleep(config['sampling_time'])
