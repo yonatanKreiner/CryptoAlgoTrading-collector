@@ -15,7 +15,7 @@ db = client.collector
 def watch_markets():
     while True:
         sample_time = datetime.datetime.utcnow()
-        tickers = []
+        tickers = {}
 
         for market in markets:
             try:
@@ -34,7 +34,7 @@ def watch_markets():
                 tickers[market['name']] = ticker
 
             except Exception as e:
-                with open('error.log', 'a') as log:
+                with open('error.log', 'a+') as log:
                     log.write(str(e) + '\n' + traceback.format_exc() + '\n')
 
         if len(tickers) == len(markets):
