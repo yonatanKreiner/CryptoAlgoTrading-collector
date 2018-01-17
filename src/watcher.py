@@ -8,8 +8,8 @@ from pymongo import MongoClient
 
 config = json.load(open('src/watcher_config.json'))
 markets = config['markets']
-client = MongoClient('mongodb://ariel:ariel@ds127536.mlab.com:27536/collector')
-db = client.collector
+client = MongoClient('mongodb://bitteamisrael:Ariel240996@ds135667-a0.mlab.com:35667,ds135667-a1.mlab.com:35667/bitteamdb?replicaSet=rs-ds135667')
+db = client.bitteamdb
 
 
 def watch_markets():
