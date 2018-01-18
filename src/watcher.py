@@ -4,11 +4,11 @@ import traceback
 import requests
 import time
 import datetime
-from pymongo import MongoClient
+import pymongo
 
 config = json.load(open('src/watcher_config.json'))
 markets = config['markets']
-client = MongoClient('mongodb://bitteamisrael:Ariel241096@ds135667-a0.mlab.com:35667,ds135667-a1.mlab.com:35667/bitteamdb?replicaSet=rs-ds135667')
+client = pymongo.MongoClient('mongodb://bitteamisrael:Ariel241096@ds135667-a0.mlab.com:35667,ds135667-a1.mlab.com:35667/bitteamdb?replicaSet=rs-ds135667')
 db = client.bitteamdb
 
 
@@ -40,6 +40,14 @@ def watch_markets():
         if len(tickers) == len(markets):
             for market in markets:
                 market_name = market['name']
-                db[market_name].insert_one(tickers[market_name])
+                for i in range(5):
+                    try:
+                        db[market_name].insert_one(tickers[market_name])
+                        break
+                    except pymongo.errors.AutoReconnect:
+                        with open('error.log', 'a+') as log:
+                            log.write('AutoReconnect ' + str(datetime.datetime.utcnow()) + '\n')
+
+                        time.sleep(pow(2, i))
 
         time.sleep(config['sampling_time'])
