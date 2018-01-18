@@ -35,7 +35,7 @@ def watch_markets():
 
             except Exception as e:
                 with open('error.log', 'a+') as log:
-                    log.write(str(e) + '\n' + traceback.format_exc() + '\n')
+                    log.write(str(datetime.datetime.utcnow()) + ' ' + str(e) + '\n' + traceback.format_exc() + '\n')
 
         if len(tickers) == len(markets):
             for market in markets:
@@ -46,7 +46,7 @@ def watch_markets():
                         break
                     except pymongo.errors.AutoReconnect:
                         with open('error.log', 'a+') as log:
-                            log.write('AutoReconnect ' + str(datetime.datetime.utcnow()) + '\n')
+                            log.write(str(datetime.datetime.utcnow()) + ' AutoReconnect' + '\n')
 
                         time.sleep(pow(2, i))
 
