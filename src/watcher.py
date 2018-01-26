@@ -49,5 +49,8 @@ def watch_markets():
                             log.write(str(datetime.datetime.utcnow()) + ' AutoReconnect' + '\n')
 
                         time.sleep(pow(2, i))
+                    except Exception as ex:
+                        with open('error.log', 'a+') as log:
+                            log.write(str(datetime.datetime.utcnow()) + ' ' + str(ex) + '\n')
 
         time.sleep(config['sampling_time'])
