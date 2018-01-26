@@ -3,7 +3,7 @@
   "file_update_time": 10,
   "markets": [
     {
-      "name": "bit2c_newest",
+      "name": "bit2c",
       "symbol": "BTCNIS",
       "api": "https://www.bit2c.co.il/Exchanges/BtcNis/Ticker.json",
       "last_price_key": "ll",
@@ -12,7 +12,7 @@
       "ask_key": "l"
     },
     {
-      "name": "bitfinex_newest",
+      "name": "bitfinex",
       "symbol": "BTCUSD",
       "api": "https://api.bitfinex.com/v1/pubticker/btcusd",
       "last_price_key": "last_price",
