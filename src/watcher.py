@@ -18,11 +18,12 @@ def watch_markets():
 
         for market in markets:
             try:
-                res = requests.get(market['api']).json()
-                price = res[market['last_price_key']]
-                volume = res[market['24_hours_volume_key']]
-                bid = res[market['bid_key']]
-                ask = res[market['ask_key']]
+                res = requests.get(market['api'])
+                json_res = res.json()
+                price = json_res[market['last_price_key']]
+                volume = json_res[market['24_hours_volume_key']]
+                bid = json_res[market['bid_key']]
+                ask = json_res[market['ask_key']]
                 ticker = {
                     'date': sample_time,
                     'price': float(price),
@@ -31,7 +32,9 @@ def watch_markets():
                     'ask': float(ask)
                 }
                 tickers[market['name']] = ticker
-
+            except json.JSONDecodeError as e:
+                with open('error.log', 'a+') as log:
+                    log.write(str(datetime.datetime.utcnow()) + '\n' + str(res) + '\n')
             except Exception as e:
                 with open('error.log', 'a+') as log:
                     log.write(str(datetime.datetime.utcnow()) + ' ' + str(e) + '\n' + traceback.format_exc() + '\n')
