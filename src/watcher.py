@@ -54,6 +54,5 @@ def watch_markets():
                     except Exception as ex:
                         with open('error.log', 'a+') as log:
                             log.write(str(datetime.datetime.utcnow()) + ' ' + str(ex) + '\n')
-            client.close()
 
         time.sleep(config['sampling_time'])
