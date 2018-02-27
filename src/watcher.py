@@ -18,7 +18,7 @@ def watch_markets():
 
         for market in markets:
             try:
-                res = requests.get(market['api'])
+                res = requests.get(market['api'], proxies=config['proxies'], timeout=3)
                 json_res = res.json()
                 price = json_res[market['last_price_key']]
                 volume = json_res[market['24_hours_volume_key']]

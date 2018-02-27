@@ -1,6 +1,10 @@
 {
   "sampling_time": 3,
   "file_update_time": 10,
+  "proxies": {
+    "http": "http://lum-customer-hl_e26add8d-zone-static:h9lsd1exrlcr@zproxy.luminati.io:22225",
+    "https": "http://lum-customer-hl_e26add8d-zone-static:h9lsd1exrlcr@zproxy.luminati.io:22225"
+  },
   "markets": [
     {
       "name": "bit2c",
