@@ -8,7 +8,7 @@ import pymongo
 
 config = json.load(open('src/watcher_config.json'))
 markets = config['markets']
-client = pymongo.MongoClient('mongodb://bitteamisrael:Ariel241096@ds135667-a0.mlab.com:35667,ds135667-a1.mlab.com:35667/bitteamdb?replicaSet=rs-ds135667')
+client = pymongo.MongoClient('MONGO_PATH')
 
 
 def watch_markets():
